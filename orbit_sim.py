@@ -361,6 +361,35 @@ def template_solar_system_scaled() -> List[Body]:
     )
     bodies.append(sun)
 
+
+    # MERCURY
+    m_mercury = 3.3011e23
+    r_mercury = 5.8e10
+    v_mercury = circular_orbit_velocity(G * sun.mass, r_mercury)
+    mercury = Body(
+        name="Mercury",
+        mass=m_mercury,
+        radius=2.44e6,
+        position=(r_mercury, 0.0),
+        velocity=(0.0, v_mercury),
+        color=(122,106,79),
+    )
+    bodies.append(mercury)
+
+    # VENUS
+    m_venus = 4.867e24
+    r_venus = 1.08e11
+    v_venus = circular_orbit_velocity(G * sun.mass, r_venus)
+    venus = Body(
+        name="Venus",
+        mass=m_venus,
+        radius=6.0518e6,
+        position=(r_venus, 0.0),
+        velocity=(0.0, v_venus),
+        color=(255,255,224),
+    )
+    bodies.append(venus)
+
     # Earth
     r_earth = 1.495978707e11  # 1 AU in meters
     v_earth = circular_orbit_velocity(G * sun.mass, r_earth)
@@ -387,6 +416,8 @@ def template_solar_system_scaled() -> List[Body]:
     )
     bodies.append(moon)
 
+    
+
     # Mars
     m_mars = 6.4171e23
     r_mars = 2.279e11
@@ -401,6 +432,10 @@ def template_solar_system_scaled() -> List[Body]:
     )
     bodies.append(mars)
 
+    
+
+    
+    
     # Jupiter
     m_jupiter = 1.898e27
     r_jupiter = 7.785e11
@@ -414,6 +449,57 @@ def template_solar_system_scaled() -> List[Body]:
         color=(210, 180, 140),
     )
     bodies.append(jupiter)
+
+
+    # SATURN
+    m_saturn = 5.6834e26
+    r_saturn = 1.43e12
+    v_saturn = circular_orbit_velocity(G * sun.mass, r_saturn)
+    saturn = Body(
+        name="Saturn",
+        mass=m_saturn,
+        radius=5.82e7,
+        position=(r_saturn, 0.0),
+        velocity=(0.0, v_saturn),
+        color=(155,122,1),
+    )
+    bodies.append(saturn)
+
+
+    # URANUS
+    m_uranus = 8.681e25
+    r_uranus = 2.87e12
+    v_uranus = circular_orbit_velocity(G * sun.mass, r_uranus)
+    uranus = Body(
+        name="Uranus",
+        mass=m_uranus,
+        radius=2.5362e7,
+        position=(r_uranus, 0.0),
+        velocity=(0.0, v_uranus),
+        color=(13,152,186),
+    )
+    bodies.append(uranus)
+
+
+
+    # NEPTUNE
+    m_neptune = 1.024e26
+    r_neptune = 4.495e12
+    v_neptune = circular_orbit_velocity(G * sun.mass, r_neptune)
+    neptune = Body(
+        name="Neptune",
+        mass=m_neptune,
+        radius=2.4764e7,
+        position=(r_neptune, 0.0),
+        velocity=(0.0, v_neptune),
+        color=(124,183,187),
+    )
+    bodies.append(neptune)
+
+
+    
+
+    
 
     return bodies
 
