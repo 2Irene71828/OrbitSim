@@ -565,7 +565,8 @@ def template_three_body_dragonfly() -> List[Body]:
     """
     m_si = 5e24
     L = 1.0e9  # meters
-    V = math.sqrt(G * m_si / L)
+    T = math.sqrt((math.pow(L,3))/G*m_si)
+    V = L / T
 
     r1 = (-0.97000436, -0.24308753)
     r2 = (0.97000436, +0.24308753)
