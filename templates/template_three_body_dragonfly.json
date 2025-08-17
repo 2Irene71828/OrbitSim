@@ -1,0 +1,9 @@
+{
+  "name": "Classic 3-body (Dragonfly)",
+  "description": "Equal-mass equilateral triangle rotating solution with correct tangential velocities",
+  "bodies": [
+    {"name": "A", "mass": 5e24, "radius": 6e6, "position": [-970004360.0, -243087530.0], "velocity": [466.2036850, -432.3657300], "color": [255,120,120]},
+    {"name": "B", "mass": 5e24, "radius": 6e6, "position": [970004360.0, 243087530.0], "velocity": [-466.2036850, -432.3657300], "color": [120,255,120]},
+    {"name": "C", "mass": 5e24, "radius": 6e6, "position": [0.0, 0.0], "velocity": [0.0, 864.7314600], "color": [120,120,255]}
+  ]
+}
