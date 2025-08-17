@@ -344,7 +344,7 @@ def circular_orbit_velocity(GM, r):
 
 def template_solar_system_scaled() -> List[Body]:
     """
-    Sun + Earth + Moon + Mars + Jupiter simplified.
+    Sun + Earth + Moon + Mars + Jupiter + MERCURY+VENUS+SATURN+URANUS+NEPTUNE simplified.
     Distances are real SI; velocities computed for circular orbits around Sun where applicable.
     The camera will auto-zoom to fit after loading.
     """
@@ -549,6 +549,30 @@ def template_three_body_figure_eight() -> List[Body]:
     v1 = (0.4662036850, 0.4323657300)
     v2 = (0.4662036850, 0.4323657300)
     v3 = (-0.93240737, -0.86473146)
+
+    bodies = []
+    bodies.append(Body("A", m_si, 6.0e6, (r1[0]*L, r1[1]*L), (v1[0]*V, v1[1]*V), (255,120,120)))
+    bodies.append(Body("B", m_si, 6.0e6, (r2[0]*L, r2[1]*L), (v2[0]*V, v2[1]*V), (120,255,120)))
+    bodies.append(Body("C", m_si, 6.0e6, (r3[0]*L, r3[1]*L), (v3[0]*V, v3[1]*V), (120,120,255)))
+    return bodies
+
+def template_three_body_dragonfly() -> List[Body]:
+    """Dragonfly solution, scaled to SI.
+    Dimensionless initial conditions (G=1, m=1):
+    r1=(-0.97000436, -0.24308753), r2=(0.97000436, +0.24308753), r3=(0,0)
+    v1=(0.3434, -0.8746), v2=(-0.3434,-0.8746), v3=(0,0)
+    We scale by choosing mass m_si and length L, then time T = sqrt(L^3/(G*m_si)), velocity V=L/T.
+    """
+    m_si = 5e24
+    L = 1.0e9  # meters
+    V = math.sqrt(G * m_si / L)
+
+    r1 = (-0.97000436, -0.24308753)
+    r2 = (0.97000436, +0.24308753)
+    r3 = (0.0, 0.0)
+    v1 = (0.3434, -0.8746)
+    v2 = (-0.3434,-0.8746)
+    v3 = (0,0)
 
     bodies = []
     bodies.append(Body("A", m_si, 6.0e6, (r1[0]*L, r1[1]*L), (v1[0]*V, v1[1]*V), (255,120,120)))
@@ -1039,7 +1063,7 @@ class UI:
                 except Exception:
                     pass
                 preset_items = list(self._template_map.keys()) or [
-                    "Solar System (scaled)", "Classic 3-body (Figure-eight)", "Classic 3-body (Lagrange)", "Empty custom"
+                    "Solar System (scaled)", "Classic 3-body (Figure-eight)", "Classic 3-body (Lagrange)", "Classic 3-body (Dragonfly)", "Empty custom"
                 ]
                 if "Empty custom" in preset_items:
                     default_item = "Empty custom"
@@ -1475,6 +1499,8 @@ class UI:
                 bodies = template_three_body_figure_eight()
             elif name == "Classic 3-body (Lagrange)":
                 bodies = template_three_body_lagrange()
+            elif name == "Classic 3-body (Dragonfly)":
+                bodies = template_three_body_dragonfly()
             elif name == "Empty custom":
                 bodies = template_empty()
             else:
